@@ -1,4 +1,5 @@
 #include <iostream>
+#include <windows.h>
 
 struct Player
 {
@@ -31,7 +32,32 @@ void drawMap()
 
 void handleInput()
 {
-	//if (GetAsyncKeyState())
+	if (GetAsyncKeyState(VK_UP))
+	{
+		if (player.y > 0)
+			player.y--;
+	}
+
+	else if (GetAsyncKeyState(VK_DOWN))
+	{
+		if (player.y < 9)
+			player.y++;
+	}
+	
+	else if (GetAsyncKeyState(VK_RIGHT))
+	{
+		if (player.x < 9)
+			player.x++;
+	}
+	
+	else if (GetAsyncKeyState(VK_LEFT))
+	{
+		if (player.x > 0)
+			player.x--;
+	}
+	
+	else if (GetAsyncKeyState(VK_SPACE))
+		running = false;
 }
 
 main()
